@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Example</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        function updateContent() {
+            // Extract content from the specified element
+            const element = document.getElementsByClassName('nav-link topNavUserLink d-none d-lg-flex topNavUsername mb-2')[0];
+            const content = element ? element.innerHTML : 'Element not found';
+
+            // Render the content on the page
+            document.getElementById('user-content').innerHTML = content;
+
+            // Print all cookies
+            const cookies = document.cookie.split('; ');
+            document.getElementById('cookies').innerHTML = cookies.join('<br>');
+
+            // Schedule the next update
+            setTimeout(updateContent, 10000);
+        }
+
+        // Initialize the first update after the page loads
+        window.onload = updateContent;
+    </script>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <header class="bg-white shadow-md p-4">
+        <h1 class="text-2xl font-bold">Tailwind CSS Example</h1>
+    </header>
+
+    <main class="mt-4">
+        <section class="bg-white p-4 shadow-md rounded">
+            <h2 class="text-xl font-semibold mb-4">Extracted Content</h2>
+            <div id="user-content" class="text-gray-700">Loading...</div>
+        </section>
+
+        <section class="bg-white p-4 shadow-md rounded mt-4">
+            <h2 class="text-xl font-semibold mb-4">Cookies</h2>
+            <div id="cookies" class="text-gray-700">Loading...</div>
+        </section>
+    </main>
+</body>
+
+</html>
